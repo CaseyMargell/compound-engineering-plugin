@@ -6,7 +6,7 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 
 | Component | Count |
 |-----------|-------|
-| Agents | 25 |
+| Agents | 27 |
 | Commands | 17 |
 | Skills | 12 |
 | MCP Servers | 2 |
@@ -15,7 +15,7 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 
 Agents are organized into categories for easier discovery.
 
-### Review (12)
+### Review (14)
 
 | Agent | Description |
 |-------|-------------|
@@ -23,6 +23,8 @@ Agents are organized into categories for easier discovery.
 | `architecture-strategist` | Analyze architectural decisions and compliance |
 | `code-simplicity-reviewer` | Final pass for simplicity and minimalism |
 | `data-integrity-guardian` | Database migrations and data integrity |
+| `data-migration-expert` | Validate ID mappings match production, check for swapped values |
+| `deployment-verification-agent` | Create Go/No-Go deployment checklists for risky data changes |
 | `dhh-rails-reviewer` | Rails review from DHH's perspective |
 | `kieran-rails-reviewer` | Rails code review with strict conventions |
 | `kieran-python-reviewer` | Python code review with strict conventions |

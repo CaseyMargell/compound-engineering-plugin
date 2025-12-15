@@ -70,6 +70,30 @@ Run ALL or most of these agents at the same time:
 
 </parallel_tasks>
 
+#### Conditional Agents (Run if applicable):
+
+<conditional_agents>
+
+These agents are run ONLY when the PR matches specific criteria. Check the PR files list to determine if they apply:
+
+**If PR contains database migrations (db/migrate/*.rb files) or data backfills:**
+
+14. Task data-migration-expert(PR content) - Validates ID mappings match production, checks for swapped values, verifies rollback safety
+15. Task deployment-verification-agent(PR content) - Creates Go/No-Go deployment checklist with SQL verification queries
+
+**When to run migration agents:**
+- PR includes files matching `db/migrate/*.rb`
+- PR modifies columns that store IDs, enums, or mappings
+- PR includes data backfill scripts or rake tasks
+- PR changes how data is read/written (e.g., changing from FK to string column)
+- PR title/body mentions: migration, backfill, data transformation, ID mapping
+
+**What these agents check:**
+- `data-migration-expert`: Verifies hard-coded mappings match production reality (prevents swapped IDs), checks for orphaned associations, validates dual-write patterns
+- `deployment-verification-agent`: Produces executable pre/post-deploy checklists with SQL queries, rollback procedures, and monitoring plans
+
+</conditional_agents>
+
 ### 4. Ultra-Thinking Deep Dive Phases
 
 <ultrathink_instruction> For each phase below, spend maximum cognitive effort. Think step by step. Consider all angles. Question assumptions. And bring all reviews in a synthesis to the user.</ultrathink_instruction>

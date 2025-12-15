@@ -5,6 +5,17 @@ All notable changes to the compound-engineering plugin will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.12.0] - 2025-12-15
+
+### Added
+
+- **`data-migration-expert` agent** - New review agent for validating database migrations and data backfills. Ensures ID mappings match production reality, checks for swapped values, verifies rollback safety, and provides SQL verification snippets. Prevents silent data corruption from mismatched enum/ID mappings.
+- **`deployment-verification-agent` agent** - New review agent that produces Go/No-Go deployment checklists for risky data changes. Creates pre/post-deploy SQL verification queries, defines data invariants, documents rollback procedures, and plans post-deploy monitoring.
+
+### Changed
+
+- **`/workflows:review` command** - Added conditional agents section. Now automatically runs `data-migration-expert` and `deployment-verification-agent` when PR contains database migrations (`db/migrate/*.rb`), data backfills, or ID/enum mapping changes.
+
 ## [2.11.0] - 2025-12-10
 
 ### Changed
