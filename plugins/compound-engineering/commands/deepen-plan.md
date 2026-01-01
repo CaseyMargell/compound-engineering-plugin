@@ -142,7 +142,62 @@ Task general-purpose: "Use the security-patterns skill at ~/.claude/skills/secur
 
 **No limit on skill sub-agents. Spawn one for every skill that could possibly be relevant.**
 
-### 3. Launch Per-Section Research Agents
+### 3. Discover and Apply Learnings/Solutions
+
+<thinking>
+Check for documented learnings from /workflows:compound. These are solved problems that may apply to the plan. Spawn a sub-agent for each learning to check if it's relevant.
+</thinking>
+
+**Step 1: Discover all documented learnings**
+
+```bash
+# Project-level learnings (from compound-docs skill)
+find docs/solutions -name "*.md" 2>/dev/null
+find .claude/docs -name "*.md" 2>/dev/null
+
+# User's global learnings
+find ~/.claude/docs -name "*.md" 2>/dev/null
+
+# Any learnings in the compound-engineering plugin
+find ~/.claude/plugins/cache/*/compound-engineering/*/docs -name "*.md" 2>/dev/null
+```
+
+**Step 2: For each learning found, spawn a sub-agent to check relevance**
+
+For EACH learning markdown file:
+```
+Task general-purpose: "Read this documented learning/solution:
+
+[Read the learning file content]
+
+Check if this learning applies to ANY part of this plan:
+
+[plan content]
+
+If the learning is relevant:
+- Explain how it applies
+- Extract the key insight or solution
+- Suggest how to incorporate it into the plan
+
+If not relevant, just say 'Not applicable' and why."
+```
+
+**Spawn ALL learning sub-agents in PARALLEL:**
+- 1 sub-agent per learning file
+- Each checks if its learning applies to the plan
+- All run simultaneously
+
+**Categories of learnings to check:**
+- `performance-issues/` - Performance optimizations that worked
+- `debugging-patterns/` - Debugging approaches that solved problems
+- `configuration-fixes/` - Config issues and their solutions
+- `integration-issues/` - Third-party integration lessons
+- `deployment-issues/` - Deployment and production learnings
+- Any other category directories found
+
+**These learnings are institutional knowledge - previous solved problems that may prevent repeating mistakes.**
+
+### 4. Launch Per-Section Research Agents
 
 <thinking>
 For each major section in the plan, spawn dedicated sub-agents to research improvements. Use the Explore agent type for open-ended research.
@@ -172,7 +227,7 @@ mcp__plugin_compound-engineering_context7__query-docs: Query documentation for s
 
 Search for recent (2024-2025) articles, blog posts, and documentation on topics in the plan.
 
-### 4. Discover and Run ALL Review Agents
+### 5. Discover and Run ALL Review Agents
 
 <thinking>
 Dynamically discover every available agent and run them ALL against the plan. Don't filter, don't skip, don't assume relevance. 40+ parallel agents is fine. Use everything available.
@@ -238,7 +293,7 @@ Task [agent-name]: "Review this plan using your expertise. Apply all your checks
 
 Research agents (like `best-practices-researcher`, `framework-docs-researcher`, `git-history-analyzer`, `repo-research-analyst`) should also be run for relevant plan sections.
 
-### 5. Wait for ALL Agents and Synthesize Everything
+### 6. Wait for ALL Agents and Synthesize Everything
 
 <thinking>
 Wait for ALL parallel agents to complete - skills, research agents, review agents, everything. Then synthesize all findings into a comprehensive enhancement.
@@ -247,10 +302,11 @@ Wait for ALL parallel agents to complete - skills, research agents, review agent
 **Collect outputs from ALL sources:**
 
 1. **Skill-based sub-agents** - Each skill's full output (code examples, patterns, recommendations)
-2. **Research agents** - Best practices, documentation, real-world examples
-3. **Review agents** - All feedback from every reviewer (architecture, security, performance, simplicity, etc.)
-4. **Context7 queries** - Framework documentation and patterns
-5. **Web searches** - Current best practices and articles
+2. **Learnings/Solutions sub-agents** - Relevant documented learnings from /workflows:compound
+3. **Research agents** - Best practices, documentation, real-world examples
+4. **Review agents** - All feedback from every reviewer (architecture, security, performance, simplicity, etc.)
+5. **Context7 queries** - Framework documentation and patterns
+6. **Web searches** - Current best practices and articles
 
 **For each agent's findings, extract:**
 - [ ] Concrete recommendations (actionable items)
@@ -261,6 +317,7 @@ Wait for ALL parallel agents to complete - skills, research agents, review agent
 - [ ] Edge cases discovered (handling strategies)
 - [ ] Documentation links (references)
 - [ ] Skill-specific patterns (from matched skills)
+- [ ] Relevant learnings (past solutions that apply - prevent repeating mistakes)
 
 **Deduplicate and prioritize:**
 - Merge similar recommendations from multiple agents
@@ -268,7 +325,7 @@ Wait for ALL parallel agents to complete - skills, research agents, review agent
 - Flag conflicting advice for human review
 - Group by plan section
 
-### 6. Enhance Plan Sections
+### 7. Enhance Plan Sections
 
 <thinking>
 Merge research findings back into the plan, adding depth without changing the original structure.
@@ -305,7 +362,7 @@ Merge research findings back into the plan, adding depth without changing the or
 - [Documentation URL 2]
 ```
 
-### 5. Add Enhancement Summary
+### 8. Add Enhancement Summary
 
 At the top of the plan, add a summary section:
 
@@ -326,7 +383,7 @@ At the top of the plan, add a summary section:
 - [Important finding 2]
 ```
 
-### 6. Update Plan File
+### 9. Update Plan File
 
 **Write the enhanced plan:**
 - Preserve original filename
