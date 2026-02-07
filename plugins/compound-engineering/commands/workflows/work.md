@@ -79,6 +79,30 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Include testing and quality check tasks
    - Keep tasks specific and completable
 
+### Phase 1.5: Product-Owner Kickoff (If PRODUCT.md exists)
+
+Before starting implementation, validate with product-owner if PRODUCT.md exists:
+
+```bash
+test -f PRODUCT.md && echo "Product validation available" || echo "Skip product kickoff"
+```
+
+**If PRODUCT.md exists:**
+
+Task compound-engineering:review:product-owner("Implementation kickoff validation:
+
+Plan: <input_document>
+
+Questions:
+1. Does this implementation approach align with product principles?
+2. Are there product requirements that should guide decisions during implementation?
+3. Are there completeness requirements to keep in mind (e.g., must support all X)?
+4. What trade-offs should be prioritized (cost vs time, simplicity vs features)?
+
+Provide implementation guidance for unexpected decisions.")
+
+This gives you product context to apply during implementation when questions arise.
+
 ### Phase 2: Execute
 
 1. **Task Execution Loop**
@@ -128,6 +152,44 @@ This command takes a work document (plan, specification, or todo file) and execu
    **Handling merge conflicts:** If conflicts arise during rebasing or merging, resolve them immediately. Incremental commits make conflict resolution easier since each commit is small and focused.
 
    **Note:** Incremental commits use clean conventional messages without attribution footers. The final Phase 4 commit/PR includes the full attribution.
+
+
+3. **Product Checkpoints During Execution**
+
+   **Unexpected Decision Checkpoint**
+
+   When you encounter situations NOT covered in the plan (technical approach fails, requirements ambiguous, multiple options, trade-offs):
+
+   **If PRODUCT.md exists**, consult product-owner:
+
+   ```
+   Task compound-engineering:review:product-owner("Unexpected decision:
+
+   Context: <situation>
+   Options: <2-3 approaches>
+   Trade-offs: <what's sacrificed in each>
+
+   Which approach aligns with product requirements?")
+   ```
+
+   **Then discuss with user** and proceed.
+
+   **Milestone Validation Checkpoint**
+
+   After completing major components (core feature done, multiple components integrated):
+
+   **If PRODUCT.md exists**, validate milestone:
+
+   ```
+   Task compound-engineering:review:product-owner("Milestone validation:
+
+   Completed: <what was built>
+   Remaining: <what's left>
+
+   Does this meet 'Must Have' requirements? Any concerns?
+
+   Validation: CONTINUE / ADJUST / RECONSIDER")
+   ```
 
 3. **Follow Existing Patterns**
 

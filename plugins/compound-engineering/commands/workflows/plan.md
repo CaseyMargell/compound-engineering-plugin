@@ -64,6 +64,37 @@ Refine the idea through collaborative dialogue using the **AskUserQuestion tool*
 **Skip option:** If the feature description is already detailed, offer:
 "Your description is clear. Should I proceed with research, or would you like to refine it further?"
 
+## Product Strategic Validation
+
+**Only run if PRODUCT.md exists in the project.**
+
+After idea refinement (Step 0) and before research (Step 1), validate strategic alignment:
+
+```bash
+test -f PRODUCT.md && echo "Validating with product-owner..." || echo "No PRODUCT.md, skipping product validation"
+```
+
+**If PRODUCT.md exists:**
+
+Task compound-engineering:review:product-owner("Validate this feature against PRODUCT.md before planning:
+
+Feature: <feature_description>
+
+Questions:
+1. Strategic Priority: Does this align with P0-P4 priorities? Which priority does it serve?
+2. User Value: Does this solve the core job-to-be-done for target users?
+3. Completeness: Are there completeness requirements (e.g., must support all X)?
+4. Trade-offs: What product principles should guide implementation decisions?
+
+Provide strategic guidance: PROCEED / REFRAME / DEFER")
+
+**Outcomes:**
+- **PROCEED**: Idea aligns with product strategy, continue with planning
+- **REFRAME**: Suggest alternative approach or scope adjustment to better align
+- **DEFER**: Not the right priority now, suggest higher-value work instead
+
+**If REFRAME or DEFER**, discuss with user before proceeding with research.
+
 ## Main Tasks
 
 ### 1. Local Research (Always Runs - Parallel)
@@ -507,7 +538,7 @@ After writing the plan file, use the **AskUserQuestion tool** to present these o
 Based on selection:
 - **Open plan in editor** → Run `open docs/plans/<plan_filename>.md` to open the file in the user's default editor
 - **`/deepen-plan`** → Call the /deepen-plan command with the plan file path to enhance with research
-- **`/plan_review`** → Call the /plan_review command with the plan file path
+- **`/plan_review`** → Call /plan_review (includes product-owner validation alongside technical reviews)
 - **`/workflows:work`** → Call the /workflows:work command with the plan file path
 - **`/workflows:work` on remote** → Run `/workflows:work docs/plans/<plan_filename>.md &` to start work in background for Claude Code web
 - **Create Issue** → See "Issue Creation" section below
