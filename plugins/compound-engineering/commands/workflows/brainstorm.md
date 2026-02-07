@@ -35,6 +35,36 @@ Evaluate whether brainstorming is needed based on the feature description.
 **If requirements are already clear:**
 Use **AskUserQuestion tool** to suggest: "Your requirements seem detailed enough to proceed directly to planning. Should I run `/workflows:plan` instead, or would you like to explore the idea further?"
 
+### Phase 0.5: Product-Owner Strategic Validation
+
+**Only run if PRODUCT.md exists in the project.**
+
+Check for product context:
+```bash
+test -f PRODUCT.md && echo "PRODUCT.md found" || echo "Skip product validation"
+```
+
+**If PRODUCT.md exists**, validate strategic alignment before investing time in brainstorming:
+
+Task compound-engineering:review:product-owner("Validate this idea against PRODUCT.md:
+
+Feature idea: <feature_description>
+
+Questions:
+1. Does this align with our strategic priorities (P0-P4)?
+2. Does this serve our target users' core job-to-be-done?
+3. Are there product principles that would guide or constrain this feature?
+4. Is this the right priority given other work?
+
+Provide brief strategic assessment: ALIGNED / RECONSIDER / BLOCK")
+
+**Possible outcomes:**
+- **ALIGNED**: Proceed with brainstorming
+- **RECONSIDER**: Product-owner suggests reprioritization or alternative approach
+- **BLOCK**: Feature doesn't align with product strategy
+
+**If BLOCK or RECONSIDER**, discuss with user before proceeding.
+
 ### Phase 1: Understand the Idea
 
 #### 1.1 Repository Research (Lightweight)
