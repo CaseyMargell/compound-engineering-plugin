@@ -1,3 +1,34 @@
+## What This Fork Adds
+
+This is a fork of [EveryInc/compound-engineering-plugin](https://github.com/EveryInc/compound-engineering-plugin) with an added **product-owner agent** — a Product Manager that lives inside your agentic development workflow.
+
+### Why
+
+The compound-engineering workflow is great at planning and executing, but I found it lacked something pushing back on *what* gets built and *why*. There was no one asking "does this align with product goals?" or "is this the right tradeoff?" — the kind of challenge a good PM provides.
+
+### What It Does
+
+The product-owner agent:
+
+- Maintains its own base instruction set via `PRODUCT.md` (separate from requirements and plans)
+- Evaluates features, plans, and implementations against product requirements and overall goals
+- Pushes back on tradeoffs that aren't aligned with long-term objectives
+- Integrates into existing `brainstorm`, `plan`, and `work` workflows as well as `/plan_review`
+- Adds `/product-acceptance` to review PRs, branches, or current changes for product requirements compliance
+
+### Install
+
+```
+/plugin marketplace add https://github.com/CaseyMargell/compound-engineering-plugin
+/plugin install compound-engineering
+```
+
+---
+
+*Everything below is from the original compound-engineering-plugin by [Every](https://github.com/EveryInc/compound-engineering-plugin).*
+
+---
+
 # Compound Marketplace
 
 [![Build Status](https://github.com/EveryInc/compound-engineering-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/EveryInc/compound-engineering-plugin/actions/workflows/ci.yml)
