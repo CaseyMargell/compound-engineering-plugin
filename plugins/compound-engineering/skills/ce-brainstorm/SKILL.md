@@ -73,6 +73,29 @@ Use the feature description plus a light repo scan to classify the work:
 
 If the scope is unclear, ask one targeted question to disambiguate and then proceed.
 
+### Phase 0.5: Product-Owner Strategic Validation
+
+**Only run if PRODUCT.md exists in the project.**
+
+If PRODUCT.md exists, validate strategic alignment before investing time in brainstorming:
+
+Task compound-engineering:review:product-owner("Validate this idea against PRODUCT.md:
+
+Feature idea: <feature_description>
+
+Questions:
+1. Does this align with strategic priorities (P0-P4)?
+2. Does this serve the target users' core job-to-be-done?
+3. Are there product principles that would guide or constrain this feature?
+4. Is this the right priority given other work?
+
+Provide brief strategic assessment: ALIGNED / RECONSIDER / BLOCK")
+
+**Outcomes:**
+- **ALIGNED**: Proceed with brainstorming
+- **RECONSIDER**: Product-owner suggests reprioritization or alternative approach — discuss with user before proceeding
+- **BLOCK**: Feature doesn't align with product strategy — discuss with user before proceeding
+
 ### Phase 1: Understand the Idea
 
 #### 1.1 Existing Context Scan

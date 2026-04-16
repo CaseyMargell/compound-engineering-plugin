@@ -155,6 +155,41 @@ Based on problem type, optionally invoke specialized agents to review the docume
 
 </parallel_tasks>
 
+### Phase 3.5: Product Learning Detection (If PRODUCT.md exists)
+
+After the technical solution is documented, analyze the completed work for product insights.
+
+**Product Learning Questions:**
+
+1. **New Product Principle?** Did this work reveal when completeness matters vs when YAGNI applies? What makes features valuable vs worthless? What builds or breaks user trust?
+2. **Priority Shift?** Did user feedback change importance? Did technical work reveal non-negotiable requirements? Should something move between P0/P1/P2/P3?
+3. **Domain Knowledge?** New understanding of how the domain works? Non-obvious behavior that affects decisions? Terminology or concepts that inform requirements?
+4. **Trade-off Update?** Did assumptions about user needs change? Did we learn when to prioritize X over Y?
+
+**If product learnings are detected**, present them to the user:
+
+```
+✓ Product learnings detected:
+
+  1. [TYPE]: "[Learning]"
+     Section: ## [Target section in PRODUCT.md]
+     Rationale: [Evidence from the work]
+
+Update PRODUCT.md? (y/n)
+```
+
+If approved, update PRODUCT.md with the learning, including:
+- What was learned
+- Evidence/rationale
+- Link to the solution doc (`docs/solutions/[category]/[filename].md`)
+- Date learned
+
+**Format for PRODUCT.md updates:**
+
+New principles → add to `## Product Principles` with "When to push back on YAGNI" examples.
+Priority shifts → update ranking in `## Strategic Priorities` with evidence.
+Domain knowledge → add to `## Domain Knowledge` with "Why this matters."
+
 ---
 
 ### Compact-Safe Mode
@@ -197,12 +232,19 @@ In compact-safe mode, only suggest `ce:compound-refresh` if there is an obvious 
 
 ## What It Captures
 
+### Technical Solutions (docs/solutions/)
 - **Problem symptom**: Exact error messages, observable behavior
 - **Investigation steps tried**: What didn't work and why
 - **Root cause analysis**: Technical explanation
 - **Working solution**: Step-by-step fix with code examples
 - **Prevention strategies**: How to avoid in future
 - **Cross-references**: Links to related issues and docs
+
+### Product Learnings (PRODUCT.md)
+- New product principles discovered
+- Priority shifts based on evidence
+- Domain knowledge gained
+- Updated trade-off decisions
 
 ## Preconditions
 

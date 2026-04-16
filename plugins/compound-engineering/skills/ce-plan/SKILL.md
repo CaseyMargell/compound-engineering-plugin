@@ -73,6 +73,29 @@ Refine the idea through collaborative dialogue using the **AskUserQuestion tool*
 **Skip option:** If the feature description is already detailed, offer:
 "Your description is clear. Should I proceed with research, or would you like to refine it further?"
 
+### 0.5 Product Strategic Validation
+
+**Only run if PRODUCT.md exists in the project.**
+
+After idea refinement and before research, validate strategic alignment:
+
+Task compound-engineering:review:product-owner("Validate this feature against PRODUCT.md before planning:
+
+Feature: <feature_description>
+
+Questions:
+1. Strategic Priority: Does this align with P0-P4 priorities? Which priority does it serve?
+2. User Value: Does this solve the core job-to-be-done for target users?
+3. Completeness: Are there completeness requirements (e.g., must support all X)?
+4. Trade-offs: What product principles should guide implementation decisions?
+
+Provide strategic guidance: PROCEED / REFRAME / DEFER")
+
+**Outcomes:**
+- **PROCEED**: Idea aligns with product strategy, continue with planning
+- **REFRAME**: Suggest alternative approach or scope adjustment to better align — discuss with user before proceeding
+- **DEFER**: Not the right priority now, suggest higher-value work instead — discuss with user before proceeding
+
 ## Main Tasks
 
 ### 1. Local Research (Always Runs - Parallel)
