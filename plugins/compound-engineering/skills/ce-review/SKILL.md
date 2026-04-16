@@ -138,6 +138,16 @@ These agents are run ONLY when the PR matches specific criteria. Check the PR fi
 - `data-migration-expert`: Verifies hard-coded mappings match production reality (prevents swapped IDs), checks for orphaned associations, validates dual-write patterns
 - `deployment-verification-agent`: Produces executable pre/post-deploy checklists with SQL queries, rollback procedures, and monitoring plans
 
+**PRODUCT: If PRODUCT.md exists in the project root:**
+
+- Task compound-engineering:review:product-owner(PR content + PRODUCT.md context) - Validates implementation against product requirements, strategic priorities, and completeness criteria
+
+**When to run:**
+- PRODUCT.md exists in the project root
+
+**What this agent checks:**
+- `product-owner`: Evaluates strategic alignment (P0-P4), completeness requirements, user value delivery, product principle adherence. Returns APPROVE / APPROVE WITH CONDITIONS / BLOCK with rationale.
+
 </conditional_agents>
 
 ### 2. Ultra-Thinking Deep Dive Phases
