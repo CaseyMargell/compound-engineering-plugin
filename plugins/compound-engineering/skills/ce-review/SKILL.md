@@ -144,6 +144,12 @@ Routing rules:
 | `compound-engineering:review:schema-drift-detector` | Cross-references schema.rb against included migrations |
 | `compound-engineering:review:deployment-verification-agent` | Produces deployment checklist with SQL verification queries |
 
+**CE conditional (product requirements):**
+
+| Agent | Select when PRODUCT.md exists in project root |
+|-------|-----------------------------------------------|
+| `compound-engineering:review:product-owner` | Validates strategic alignment (P0-P4), completeness requirements, user value delivery, product principle adherence |
+
 ## Review Scope
 
 Every review spawns all 4 always-on personas plus the 2 CE always-on agents, then adds whichever cross-cutting and stack-specific conditionals fit the diff. The model naturally right-sizes: a small config change triggers 0 conditionals = 6 reviewers. A Rails auth feature might trigger security + reliability + kieran-rails + dhh-rails = 10 reviewers.
@@ -345,7 +351,7 @@ Read the diff and file list from Stage 1. The 4 always-on personas and 2 CE alwa
 
 Stack-specific personas are additive. A Rails UI change may warrant `kieran-rails` plus `julik-frontend-races`; a TypeScript API diff may warrant `kieran-typescript` plus `api-contract` and `reliability`.
 
-For CE conditional agents, check if the diff includes files matching `db/migrate/*.rb`, `db/schema.rb`, or data backfill scripts.
+For CE conditional agents, check if the diff includes files matching `db/migrate/*.rb`, `db/schema.rb`, or data backfill scripts. Also check if `PRODUCT.md` exists in the project root — if so, include `product-owner`.
 
 Announce the team before spawning:
 
