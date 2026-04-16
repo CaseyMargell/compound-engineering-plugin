@@ -168,6 +168,24 @@ Determine how to proceed based on what was provided in `<input_document>`.
    5. Update the plan checkboxes and task list
    6. Dispatch the next batch of independent units, or the next dependent unit
 
+### Phase 1.5: Product-Owner Kickoff (If PRODUCT.md exists)
+
+Before starting implementation, validate with the product-owner agent if PRODUCT.md exists:
+
+Task compound-engineering:review:product-owner("Implementation kickoff validation:
+
+Plan: <input_document>
+
+Questions:
+1. Does this implementation approach align with product principles?
+2. Are there product requirements that should guide decisions during implementation?
+3. Are there completeness requirements to keep in mind (e.g., must support all X)?
+4. What trade-offs should be prioritized (cost vs time, simplicity vs features)?
+
+Provide implementation guidance for unexpected decisions.")
+
+This gives product context to apply during implementation when questions arise.
+
 ### Phase 2: Execute
 
 1. **Task Execution Loop**
@@ -280,7 +298,32 @@ Determine how to proceed based on what was provided in `<input_document>`.
 
    If a `/simplify` skill or equivalent is available, use it. Otherwise, review the changed files yourself for reuse and consolidation opportunities.
 
-6. **Figma Design Sync** (if applicable)
+6. **Product Checkpoints (If PRODUCT.md exists)**
+
+   **Unexpected Decision Checkpoint** — When encountering situations not covered in the plan (technical approach fails, requirements are ambiguous, multiple valid options, trade-offs):
+
+   Task compound-engineering:review:product-owner("Unexpected decision during implementation:
+
+   Context: <situation>
+   Options: <2-3 approaches>
+   Trade-offs: <what's sacrificed in each>
+
+   Which approach aligns with product requirements?")
+
+   Discuss the recommendation with the user and proceed.
+
+   **Milestone Validation Checkpoint** — After completing major components (core feature done, multiple components integrated):
+
+   Task compound-engineering:review:product-owner("Milestone validation:
+
+   Completed: <what was built>
+   Remaining: <what's left>
+
+   Does this meet 'Must Have' requirements? Any concerns?
+
+   Validation: CONTINUE / ADJUST / RECONSIDER")
+
+7. **Figma Design Sync** (if applicable)
 
    For UI work with Figma designs:
 

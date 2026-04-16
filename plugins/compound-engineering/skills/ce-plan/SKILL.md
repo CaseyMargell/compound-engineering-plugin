@@ -136,6 +136,29 @@ If the bootstrap uncovers major unresolved product questions:
 - Recommend `ce:brainstorm` again
 - If the user still wants to continue, require explicit assumptions before proceeding
 
+#### 0.45 Product Strategic Validation (If PRODUCT.md exists)
+
+**Only run if PRODUCT.md exists in the project.**
+
+After idea refinement and before classifying outstanding questions, validate strategic alignment:
+
+Task compound-engineering:review:product-owner("Validate this feature against PRODUCT.md before planning:
+
+Feature: <feature_description>
+
+Questions:
+1. Strategic Priority: Does this align with P0-P4 priorities? Which priority does it serve?
+2. User Value: Does this solve the core job-to-be-done for target users?
+3. Completeness: Are there completeness requirements (e.g., must support all X)?
+4. Trade-offs: What product principles should guide implementation decisions?
+
+Provide strategic guidance: PROCEED / REFRAME / DEFER")
+
+**Outcomes:**
+- **PROCEED**: Idea aligns with product strategy, continue with planning
+- **REFRAME**: Suggest alternative approach or scope adjustment to better align — discuss with user before proceeding
+- **DEFER**: Not the right priority now, suggest higher-value work instead — discuss with user before proceeding
+
 If the bootstrap reveals that a different workflow would serve the user better:
 
 - **Symptom without a root cause** (user describes broken behavior but hasn't identified why) — announce that investigation is needed before planning and load the `ce:debug` skill. A plan requires a known problem to solve; debugging identifies what that problem is. Announce the routing clearly: "This needs investigation before planning — switching to ce:debug to find the root cause."
