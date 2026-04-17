@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.67.0](https://github.com/CaseyMargell/compound-engineering-plugin/compare/cli-v2.66.1...cli-v2.67.0) (2026-04-17)
+
+
+### Features
+
+* **ce-demo-reel:** add demo reel skill with Python capture pipeline ([#541](https://github.com/CaseyMargell/compound-engineering-plugin/issues/541)) ([b979143](https://github.com/CaseyMargell/compound-engineering-plugin/commit/b979143ad0460a985dd224e7f1858416d79551fb))
+* **ce-setup:** unified setup skill with dependency management and config bootstrapping ([#345](https://github.com/CaseyMargell/compound-engineering-plugin/issues/345)) ([354dbb7](https://github.com/CaseyMargell/compound-engineering-plugin/commit/354dbb75828f0152f4cbbb3b50ce4511fa6710c7))
+* **ce-update:** add plugin version check skill and ce_platforms filtering ([#532](https://github.com/CaseyMargell/compound-engineering-plugin/issues/532)) ([d37f0ed](https://github.com/CaseyMargell/compound-engineering-plugin/commit/d37f0ed16f94aaec2a7b435a0aaa018de5631ed3))
+* **ce-work-beta:** add beta Codex delegation mode ([#476](https://github.com/CaseyMargell/compound-engineering-plugin/issues/476)) ([31b0686](https://github.com/CaseyMargell/compound-engineering-plugin/commit/31b0686c2e88808381560314f10ce276c86e11e2))
+* **ce-work:** reduce token usage by extracting late-sequence references ([#540](https://github.com/CaseyMargell/compound-engineering-plugin/issues/540)) ([bb59547](https://github.com/CaseyMargell/compound-engineering-plugin/commit/bb59547a2efdd4e7213c149f51abd9c9a17016dd))
+* **product-owner:** re-integrate into v2.42.0 skill architecture ([d77c9b5](https://github.com/CaseyMargell/compound-engineering-plugin/commit/d77c9b517189c34e242c47a39d5e2c6ab444d45b))
+* **session-historian:** cross-platform session history agent and /ce-sessions skill ([#534](https://github.com/CaseyMargell/compound-engineering-plugin/issues/534)) ([3208ec7](https://github.com/CaseyMargell/compound-engineering-plugin/commit/3208ec71f8f2209abc76baf97e3967406755317d))
+
+
+### Bug Fixes
+
+* **ce-brainstorm:** reduce token cost by extracting late-sequence content ([#511](https://github.com/CaseyMargell/compound-engineering-plugin/issues/511)) ([bdeb793](https://github.com/CaseyMargell/compound-engineering-plugin/commit/bdeb7935fcdb147b73107177769c2e968463d93f))
+* **cli:** resolve repo-wide tsc --noEmit type errors ([#512](https://github.com/CaseyMargell/compound-engineering-plugin/issues/512)) ([3fa0c81](https://github.com/CaseyMargell/compound-engineering-plugin/commit/3fa0c815b286c9e11b28dc04c803529e73b79c1b))
+* **converters:** preserve Codex agent sidecar scripts ([#563](https://github.com/CaseyMargell/compound-engineering-plugin/issues/563)) ([ee8e402](https://github.com/CaseyMargell/compound-engineering-plugin/commit/ee8e4028972252620f0dbfdbe1240204d22e6ea1))
+* **converters:** preserve Codex config on no-MCP install ([#564](https://github.com/CaseyMargell/compound-engineering-plugin/issues/564)) ([ed778e6](https://github.com/CaseyMargell/compound-engineering-plugin/commit/ed778e62f1e0e8621df94e5d461b20833cff33e2))
+* **openclaw:** use sync plugin registration ([#498](https://github.com/CaseyMargell/compound-engineering-plugin/issues/498)) ([2c05c43](https://github.com/CaseyMargell/compound-engineering-plugin/commit/2c05c43dc8b66ae37501e42a9747c07d82002185))
+
 ## [2.66.1](https://github.com/EveryInc/compound-engineering-plugin/compare/cli-v2.66.0...cli-v2.66.1) (2026-04-16)
 
 
