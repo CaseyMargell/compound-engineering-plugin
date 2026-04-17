@@ -11,7 +11,7 @@ After installing, run `/ce-setup` in any project. It diagnoses your environment,
 | Component | Count |
 |-----------|-------|
 | Agents | 50+ |
-| Skills | 42+ |
+| Skills | 43+ |
 
 ## Skills
 
@@ -83,6 +83,7 @@ For `/ce-optimize`, see [`skills/ce-optimize/README.md`](./skills/ce-optimize/RE
 |-------|-------------|
 | `claude-permissions-optimizer` | Optimize Claude Code permissions from session history |
 | `document-review` | Review documents using parallel persona agents for role-specific feedback |
+| `product-acceptance` | Validate implementations against project-specific product requirements in PRODUCT.md |
 
 ### Content & Collaboration
 
@@ -139,6 +140,7 @@ Agents are specialized subagents invoked by skills — you typically don't call 
 | `testing-reviewer` | Test coverage gaps, weak assertions |
 | `project-standards-reviewer` | CLAUDE.md and AGENTS.md compliance |
 | `adversarial-reviewer` | Construct failure scenarios to break implementations across component boundaries |
+| `product-owner` | Validate features, plans, and implementations against project-specific product requirements in PRODUCT.md |
 
 ### Document Review
 
